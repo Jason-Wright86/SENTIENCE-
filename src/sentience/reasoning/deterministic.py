@@ -11,7 +11,7 @@ class DeterministicReasoner(Reasoner):
         """Return a transparent conclusion without an external AI provider."""
         evidence_count = len(request.evidence)
         confidence = min(0.5 + 0.1 * evidence_count, 0.9)
-        uncertainty = 1.0 - confidence
+        uncertainty = round(1.0 - confidence, 10)
         return ReasoningResult(
             conclusion=f"Processed question: {request.question}",
             confidence=confidence,
